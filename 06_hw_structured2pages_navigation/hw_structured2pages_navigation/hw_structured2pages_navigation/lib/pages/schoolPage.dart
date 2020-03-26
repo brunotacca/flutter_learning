@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SchoolPage extends StatefulWidget {
   @override
@@ -19,8 +20,11 @@ class _SchoolPageState extends State<SchoolPage> {
             decoration: TextDecoration.none
           )
         ),
-        RaisedButton( // Warning, needs onPressed... next app.
-          child: Text('Flutter.io', textAlign: TextAlign.center)
+        RaisedButton( 
+          child: Text('Flutter.dev', textAlign: TextAlign.center),
+          onPressed: () {
+            launch('https://flutter.dev/');
+          },
         )
       ],
     );
