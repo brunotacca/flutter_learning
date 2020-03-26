@@ -19,7 +19,7 @@ class _SchoolPageState extends State<SchoolPage> {
             decoration: TextDecoration.none
           )
         ),
-        RaisedButton(
+        RaisedButton( // Warning, needs onPressed... next app.
           child: Text('Flutter.io', textAlign: TextAlign.center)
         )
       ],
