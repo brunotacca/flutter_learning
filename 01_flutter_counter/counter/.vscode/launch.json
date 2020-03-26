@@ -9,7 +9,6 @@
             "request": "launch",
             "args": [
                 "--enable-software-rendering", 
-                "--trace-startup"
             ],
             "type": "dart"
         }
