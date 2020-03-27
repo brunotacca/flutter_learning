@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="hw_full_app"
+        android:label="Hello World App Emoji"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
