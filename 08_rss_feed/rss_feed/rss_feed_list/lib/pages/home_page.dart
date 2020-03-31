@@ -1,7 +1,14 @@
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
-import './aticles_page.dart';
+import 'package:rss_feed_list/pages/articles_page.dart';
+import '../data/local_storage.dart';
 
 class HomePage extends StatefulWidget {
+  final LocalStorage storage;
+
+  HomePage({Key key, @required this.storage}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -12,7 +19,32 @@ class _HomePageState extends State<HomePage> {
   List feeds = [ ];
 
   @override
+  void initState() {
+    super.initState();
+    widget.storage.readFileFeeds().then((data) {
+      setState(() {
+        feeds = data;
+      });
+    });
+  }
+
+  Future<File> _addFeed() {
+
+    if(_formKey.currentState.validate()) {
+      setState(() {
+        feeds.add(feedController.text);
+        feedController.text = '';
+      });
+    }
+
+    // Write the variable as a string to the file.
+    return widget.storage.writeFeeds(feeds);
+  }
+
+
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('My RSS Feeds'),
@@ -32,7 +64,12 @@ class _HomePageState extends State<HomePage> {
                       title: Text(feeds[index]),
                       leading: Icon(Icons.rss_feed),
                       onTap: (){
-                        
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ArticlePage(feed: feeds[index])
+                          )
+                        );
                       },
                     );
                   }
@@ -55,14 +92,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text('Add'),
                 color: Colors.blue,
                 textColor: Colors.white,
-                onPressed: () {
-                  if(_formKey.currentState.validate()) {
-                    setState(() {
-                      feeds.add(feedController.text);
-                      feedController.text = '';
-                    });
-                  }
-                },
+                onPressed: _addFeed,
               )
             ],
           ),
