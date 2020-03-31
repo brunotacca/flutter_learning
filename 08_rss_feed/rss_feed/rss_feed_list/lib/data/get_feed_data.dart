@@ -5,13 +5,9 @@ import 'dart:io';
 class GetFeedData {
 
   Future<List> read({String url}) async {
-    //http.Client client = http.Client();
-    //var data = await client.get(url);
-    //xml.XmlDocument rss = xml.parse(response.body);
     List articles = [];
     try {
       var response = await http.get(url);
-      //final rss = xml.parse(response.body);
       final rss = xml.parse(_returnResponseBody(response));
 
       rss.findAllElements('item')

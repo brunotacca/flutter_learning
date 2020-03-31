@@ -92,7 +92,6 @@ class _ArticlePageState extends State<ArticlePage> {
                 subtitle: Text(articles[index]['link']),
                 leading: Icon(Icons.open_in_browser),
                 onTap: () async{
-                  //print(articles[index]['link']);
                   _launchURL(url: articles[index]['link']);
                 },
               );
