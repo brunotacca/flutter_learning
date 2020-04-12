@@ -2,6 +2,8 @@
 
 Contact list
 
-<img src="readme_images/01.png" width="150px"> <img src="readme_images/02.png" width="150px"> <img src="readme_images/03.png" width="150px"> 
+<img src="images/readme/01.png" width="150px"> <img src="images/readme/02.png" width="150px"> <img src="images/readme/03.png" width="150px"> 
 
-<img src="readme_images/04.png" width="150px"> <img src="readme_images/05.png" width="150px"> <img src="readme_images/06.png" width="150px">
+<img src="images/readme/04.png" width="150px"> <img src="images/readme/05.png" width="150px"> <img src="images/readme/06.png" width="150px"> 
+
+<img src="images/readme/07.png" width="150px">
