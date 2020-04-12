@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     http.Response response;
     if (_search == null || _search.isEmpty) {
       response = await http
-          .get("https://api.giphy.com/v1/gifs/trending?api_key=wFV7XT0ECa445IhP7sDijEyqzokoVbMO&limit=19&rating=G");
+          .get("https://api.giphy.com/v1/gifs/trending?api_key=wFV7XT0ECa445IhP7sDijEyqzokoVbMO&limit=20&rating=G");
     } else {
       response = await http.get(
           "https://api.giphy.com/v1/gifs/search?api_key=wFV7XT0ECa445IhP7sDijEyqzokoVbMO&q=$_search&limit=19&offset=$_offset&rating=G&lang=en");
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   int _getCount(List data) {
-    if (_search == null) {
+    if (_search == null || _search.isEmpty) {
       return data.length;
     } else {
       return data.length + 1;
