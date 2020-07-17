@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'customtimer_painter.dart';
 
 class CountDownTimer extends StatefulWidget {
@@ -94,19 +93,20 @@ class _CountDownTimerState extends State<CountDownTimer> with TickerProviderStat
                         ),
                       ),
                       AnimatedBuilder(
-                          animation: controller,
-                          builder: (context, child) {
-                            return FloatingActionButton.extended(
-                                onPressed: () {
-                                  if (controller.isAnimating)
-                                    controller.stop();
-                                  else {
-                                    controller.reverse(from: controller.value == 0.0 ? 1.0 : controller.value);
-                                  }
-                                },
-                                icon: Icon(controller.isAnimating ? Icons.pause : Icons.play_arrow),
-                                label: Text(controller.isAnimating ? "Pause" : "Play"));
-                          }),
+                        animation: controller,
+                        builder: (context, child) {
+                          return FloatingActionButton.extended(
+                              onPressed: () {
+                                if (controller.isAnimating)
+                                  controller.stop();
+                                else {
+                                  controller.reverse(from: controller.value == 0.0 ? 1.0 : controller.value);
+                                }
+                              },
+                              icon: Icon(controller.isAnimating ? Icons.pause : Icons.play_arrow),
+                              label: Text(controller.isAnimating ? "Pause" : "Play"));
+                        },
+                      ),
                     ],
                   ),
                 ),
