@@ -14,7 +14,7 @@ void main() {
   Logger.root.level = Level.ALL;
   PrintAppender().attachToLogger(Logger.root);
   logMessages.attachToLogger(Logger.root);
-  _logger.fine('Application launched.');
+  _logger.fine('Application launched. (v2)');
   _setTargetPlatformForDesktop();
   runApp(MyApp());
 }
@@ -23,14 +23,7 @@ void main() {
 /// a supported platform (iOS for macOS, Android for Linux and Windows).
 /// Otherwise, do nothing.
 void _setTargetPlatformForDesktop() {
-  TargetPlatform targetPlatform;
-  if (Platform.isLinux || Platform.isWindows) {
-    targetPlatform = TargetPlatform.android;
-  }
-  _logger.info('targetPlatform: $targetPlatform');
-  if (targetPlatform != null) {
-    debugDefaultTargetPlatformOverride = targetPlatform;
-  }
+  // no longer required.
 }
 
 class StringBufferWrapper with ChangeNotifier {
@@ -172,6 +165,7 @@ class _MyAppState extends State<MyApp> {
                 _logger.info('initiailzed $baseName');
               },
             ),
+            ...?_appArmorButton(),
             ...(_authStorage == null
                 ? []
                 : [
@@ -238,6 +232,24 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+
+  List<Widget> _appArmorButton() => !Platform.isLinux
+      ? null
+      : [
+          RaisedButton(
+            child: const Text('Check App Armor'),
+            onPressed: () async {
+              if (await BiometricStorage().linuxCheckAppArmorError()) {
+                _logger.info('Got an error! User has to authorize us to '
+                    'use secret service.');
+                _logger.info(
+                    'Run: `snap connect biometric-storage-example:password-manager-service`');
+              } else {
+                _logger.info('all good.');
+              }
+            },
+          )
+        ];
 }
 
 class StorageActions extends StatelessWidget {
