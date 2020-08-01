@@ -6,12 +6,13 @@ enum ArmAnim {
   hide,
 }
 
-class YetiScreen extends StatefulWidget {
+class YetiPinScreen extends StatefulWidget {
   @override
-  _YetiScreenState createState() => _YetiScreenState();
+  _YetiPinScreenState createState() => _YetiPinScreenState();
 }
 
-class _YetiScreenState extends State<YetiScreen> with TickerProviderStateMixin {
+class _YetiPinScreenState extends State<YetiPinScreen>
+    with TickerProviderStateMixin {
   static String baseUrl = 'https://firebasestorage.googleapis.com/';
   static String baseRepo = 'v0/b/flutter-yeti.appspot.com/o/';
 
@@ -35,34 +36,54 @@ class _YetiScreenState extends State<YetiScreen> with TickerProviderStateMixin {
   Widget powered() {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: Container(
-        width: 150,
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: 20,
-            top: 10,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Powered by',
-                style: TextStyle(
-                  fontFamily: 'Sans',
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            width: 150,
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: 5,
+                top: 10,
               ),
-              SizedBox(width: 5),
-              Semantics(
-                child: FlutterLogo(),
-                label: "Flutter",
-                readOnly: true,
-              )
-            ],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Powered by',
+                    style: TextStyle(
+                      fontFamily: 'Sans',
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(width: 5),
+                  Semantics(
+                    child: FlutterLogo(),
+                    label: "Flutter",
+                    readOnly: true,
+                  )
+                ],
+              ),
+            ),
           ),
-        ),
+          Padding(
+            padding: EdgeInsets.only(
+              bottom: 25,
+              top: 10,
+            ),
+            child: Text(
+              'Yeti design at https://codepen.io/team/codepen/pen/LYpGWBx',
+              style: TextStyle(
+                fontFamily: 'Sans',
+                fontSize: 12,
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
