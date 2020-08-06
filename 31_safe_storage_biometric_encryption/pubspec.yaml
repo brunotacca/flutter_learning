@@ -24,10 +24,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  encrypt: ^4.0.2
+  crypton: ^1.1.1
   biometric_storage: ^1.0.0
   passcode_screen: ^1.2.0
-
+  device_info: '>=0.4.2+4 <2.0.0'
+  shared_preferences: ^0.5.8
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
